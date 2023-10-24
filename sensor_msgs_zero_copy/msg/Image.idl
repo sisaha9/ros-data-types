@@ -52,7 +52,7 @@ module sensor_msgs_zero_copy {
         std_msgs_zero_copy::msg::dds_::Header_ header;
         uint32 height;
         uint32 width;
-        string encoding;
+        char encoding[10];
         octet is_bigendian;
         uint32 step;
         octet data[24883200];
