@@ -32,11 +32,11 @@ set_property(TARGET sensormsgszerocopylibrary PROPERTY
     POSITION_INDEPENDENT_CODE ON
 )
 
-target_include_directories(sensormsgslibrary PRIVATE 
+target_include_directories(sensormsgszerocopylibrary PRIVATE 
     ${CONNEXTDDS_INCLUDE_DIRS}
     ${top_level_binary_dir}
 )
 
-target_compile_definitions(sensormsgslibrary PRIVATE 
+target_compile_definitions(sensormsgszerocopylibrary PRIVATE 
     ${CONNEXTDDS_COMPILE_DEFINITIONS}
 )
