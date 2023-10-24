@@ -36,7 +36,7 @@ module std_msgs_zero_copy {
       @language_binding(FLAT_DATA)
       struct Header_ {
         builtin_interfaces_zero_copy::msg::dds_::Time_ stamp;
-        string frame_id;
+        char frame_id[25];
       };
     };
   };
@@ -55,7 +55,7 @@ module sensor_msgs_zero_copy {
         string encoding;
         octet is_bigendian;
         uint32 step;
-        sequence<octet> data;
+        octet data[24883200];
       };
     };
   };
