@@ -14,6 +14,20 @@
 
 include(ConnextDdsRosDdsTypes)
 
+if(DEFINED ENV{NDDSHOME})
+  set(NDDSHOME $ENV{NDDSHOME})
+else()
+  message(FATAL_ERROR "NDDSHOME (env var) is not set")
+endif()
+
+set(CMAKE_MODULE_PATH ${NDDSHOME}/resource/cmake)
+
+find_package(RTIConnextDDS EXACT "6.1.1" REQUIRED)
+
+include_directories(
+  ${CONNEXTDDS_INCLUDE_DIRS}
+)
+
 list(APPEND idl_files "${CMAKE_CURRENT_SOURCE_DIR}/msg/Image.idl")
 
 connextdds_generate_ros_dds_types(
@@ -39,4 +53,8 @@ target_include_directories(sensormsgszerocopylibrary PRIVATE
 
 target_compile_definitions(sensormsgszerocopylibrary PRIVATE 
     ${CONNEXTDDS_COMPILE_DEFINITIONS}
+)
+
+target_link_libraries(sensormsgszerocopylibrary PRIVATE 
+    RTIConnextDDS::metp
 )
