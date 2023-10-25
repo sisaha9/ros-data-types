@@ -40,3 +40,7 @@ target_include_directories(sensormsgszerocopylibrary PRIVATE
 target_compile_definitions(sensormsgszerocopylibrary PRIVATE 
     ${CONNEXTDDS_COMPILE_DEFINITIONS}
 )
+
+target_link_libraries(sensormsgszerocopylibrary PRIVATE
+    RTIConnextDDS::metp
+)
