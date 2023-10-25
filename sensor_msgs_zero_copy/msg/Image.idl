@@ -17,31 +17,6 @@
 #ifndef __sensor_msgs_zero_copy__msg__Image__idl
 #define __sensor_msgs_zero_copy__msg__Image__idl
 
-module builtin_interfaces_zero_copy { module msg { module dds_ { 
-
-  @final
-  @language_binding(FLAT_DATA)
-  struct Time_ { 
-    int32 sec; 
-    uint32 nanosec; 
-  }; 
- 
-}; }; };
-
-module std_msgs_zero_copy {
-  module msg {
-    module dds_ {
-      @final
-      @transfer_mode(SHMEM_REF)
-      @language_binding(FLAT_DATA)
-      struct Header_ {
-        builtin_interfaces_zero_copy::msg::dds_::Time_ stamp;
-        char frame_id[25];
-      };
-    };
-  };
-};
-
 module sensor_msgs_zero_copy {
   module msg {
     module dds_ {
@@ -49,7 +24,9 @@ module sensor_msgs_zero_copy {
       @transfer_mode(SHMEM_REF)
       @language_binding(FLAT_DATA)
       struct Image_ {
-        std_msgs_zero_copy::msg::dds_::Header_ header;
+        int32 sec;
+        uint32 nanosec;
+        char frame_id[25];
         uint32 height;
         uint32 width;
         char encoding[10];
